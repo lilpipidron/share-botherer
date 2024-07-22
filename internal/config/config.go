@@ -7,7 +7,8 @@ type Config struct {
 }
 
 type BotConfig struct {
-	Toket string `env:"BOT_TOKEN,required"`
+	Toket             string `env:"BOT_TOKEN,required"`
+	WorkersForUpdates int    `env:"WORKERS_FOR_UPDATES" envDefault:"1"`
 }
 
 func Load() *Config {

@@ -1,9 +1,8 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/joho/godotenv"
+	"github.com/lilpipidron/share-botherer/internal/bot"
 	"github.com/lilpipidron/share-botherer/internal/config"
 )
 
@@ -13,5 +12,5 @@ func main() {
 	}
 
 	cfg := config.Load()
-	fmt.Println(*cfg)
+	bot.Start(cfg)
 }
