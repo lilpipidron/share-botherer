@@ -1,7 +1,7 @@
 package models
 
 type User struct {
-	ID         int
-	ChatID     int64 `gorm:"unique"`
-	TelegramID int64 `gorm:"unique"`
+	ID         uint
+	ChatID     uint `gorm:"unique;not null;index"`
+	TelegramID uint `gorm:"unique;not null;index"`
 }
