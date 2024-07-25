@@ -30,7 +30,7 @@ require (
 require (
 	github.com/caarlos0/env/v11 v11.1.0
 	github.com/charmbracelet/log v0.4.0
-	github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1
+	gopkg.in/telebot.v3 v3.3.6
 	gorm.io/driver/postgres v1.5.9
 	gorm.io/gorm v1.25.11
 )
