@@ -9,7 +9,7 @@ type Config struct {
 
 type PostgresConfig struct {
 	PostgresUser    string `env:"POSTGRES_USER,required"`
-	PostgresPasswrd string `env:"POSTGRES_PASSWORD,required"`
+	PostgresPassword string `env:"POSTGRES_PASSWORD,required"`
 	PostgresDB      string `env:"POSTGRES_DB,required"`
 	PostgresHost    string `env:"POSTGRES_HOST,required"`
 	PostgresPort    int    `env:"POSTGRES_PORT,required"`
