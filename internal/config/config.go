@@ -4,6 +4,15 @@ import "github.com/caarlos0/env/v11"
 
 type Config struct {
 	BotConfig
+  PostgresConfig
+}
+
+type PostgresConfig struct {
+	PostgresUser    string `env:"POSTGRES_USER,required"`
+	PostgresPasswrd string `env:"POSTGRES_PASSWORD,required"`
+	PostgresDB      string `env:"POSTGRES_DB,required"`
+	PostgresHost    string `env:"POSTGRES_HOST,required"`
+	PostgresPort    int    `env:"POSTGRES_PORT,required"`
 }
 
 type BotConfig struct {
