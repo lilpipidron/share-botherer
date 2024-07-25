@@ -5,6 +5,7 @@ import (
 
 	"github.com/charmbracelet/log"
 	"github.com/lilpipidron/share-botherer/internal/config"
+	"github.com/lilpipidron/share-botherer/internal/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -14,7 +15,7 @@ type StorageGorm struct {
 	DB *gorm.DB
 }
 
-func InitDB(cfg *config.Config) (*StorageGorm, error) {
+func InitDB(cfg *config.Config) *StorageGorm {
 	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
 		cfg.PostgresHost, cfg.PostgresPort, cfg.PostgresUser, cfg.PostgresPassword, cfg.PostgresDB)
 
@@ -23,10 +24,13 @@ func InitDB(cfg *config.Config) (*StorageGorm, error) {
 	})
 
 	if err != nil {
-		return nil, err
+		log.Fatal(err)
 	}
 
 	log.Info("Successfully opened postgresql connection")
 
-	return &StorageGorm{DB: db}, nil
+	if err := db.AutoMigrate(&models.User{}, &models.Message{}, &models.UserConnection{}); err != nil {
+		log.Fatal(err)
+	}
+	return &StorageGorm{DB: db}
 }
