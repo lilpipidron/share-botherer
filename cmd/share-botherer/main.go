@@ -15,6 +15,8 @@ func main() {
 	cfg := config.Load()
 	db := postgresql.InitDB(cfg)
 	tgBot := bot.Connect(cfg)
+
 	tgBot.Handle("/start", bot.Start(tgBot, db))
+  tgBot.Handle("/pair", bot.Pair(tgBot, db))
 	tgBot.Start()
 }

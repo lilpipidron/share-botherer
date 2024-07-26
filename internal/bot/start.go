@@ -16,13 +16,15 @@ func Start(bot *telebot.Bot, storage *postgresql.StorageGorm) telebot.HandlerFun
 		user := models.User{
 			ChatID:     c.Chat().ID,
 			TelegramID: c.Message().Sender.ID,
+      Username: c.Chat().Username,
 		}
 
 		if err := storage.DB.Save(&user).Error; err != nil {
-			log.Error(err)
 			if isUniqueViolation(err) {
 				return c.Send("User already exists")
 			}
+
+			log.Error(err)
 			return err
 		}
 
