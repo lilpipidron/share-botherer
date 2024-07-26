@@ -17,6 +17,7 @@ func main() {
 	tgBot := bot.Connect(cfg)
 
 	tgBot.Handle("/start", bot.Start(tgBot, db))
-  tgBot.Handle("/pair", bot.Pair(tgBot, db))
+	tgBot.Handle("/pair", bot.Pair(tgBot, db))
+	tgBot.Handle("/send", bot.Send(tgBot, db))
 	tgBot.Start()
 }
