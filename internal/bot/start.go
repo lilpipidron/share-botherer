@@ -1,40 +1,39 @@
 package bot
 
 import (
+	"errors"
+
 	"github.com/charmbracelet/log"
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"github.com/lilpipidron/share-botherer/internal/config"
+	"github.com/jackc/pgerrcode"
+	"github.com/jackc/pgx/v5/pgconn"
+	"github.com/lilpipidron/share-botherer/internal/models"
+	"github.com/lilpipidron/share-botherer/internal/storage/postgresql"
+	"gopkg.in/telebot.v3"
 )
 
-func Start(cfg *config.Config) {
-	bot, err := tgbotapi.NewBotAPI(cfg.Toket)
-	if err != nil {
-		panic(err)
-	}
+func Start(bot *telebot.Bot, storage *postgresql.StorageGorm) telebot.HandlerFunc {
+	return func(c telebot.Context) error {
+		user := models.User{
+			ChatID:     c.Chat().ID,
+			TelegramID: c.Message().Sender.ID,
+		}
 
-	log.Debug("Authorized on account %s", bot.Self.UserName)
+		if err := storage.DB.Save(&user).Error; err != nil {
+			log.Error(err)
+			if isUniqueViolation(err) {
+				return c.Send("User already exists")
+			}
+			return err
+		}
 
-	u := tgbotapi.NewUpdate(0)
-	u.Timeout = 60
-
-	updates := bot.GetUpdatesChan(u)
-
-	for range cfg.WorkersForUpdates {
-		go worker(updates, bot)
+		return c.Send("User saved")
 	}
 }
 
-func worker(updates tgbotapi.UpdatesChannel, bot *tgbotapi.BotAPI) {
-	for update := range updates {
-		if update.Message != nil {
-			log.Info("Message received", "username", update.Message.From.UserName,
-				"chatID", update.Message.Chat.ID, "message text", update.Message.Text)
-
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "test message")
-
-			if _, err := bot.Send(msg); err != nil {
-				log.Error(err)
-			}
-		}
+func isUniqueViolation(err error) bool {
+	var pgErr *pgconn.PgError
+	if errors.As(err, &pgErr) {
+		return pgErr.Code == pgerrcode.UniqueViolation
 	}
+	return false
 }

@@ -30,6 +30,7 @@ require (
 require (
 	github.com/caarlos0/env/v11 v11.1.0
 	github.com/charmbracelet/log v0.4.0
+	github.com/jackc/pgerrcode v0.0.0-20240316143900-6e2875d9b438
 	gopkg.in/telebot.v3 v3.3.6
 	gorm.io/driver/postgres v1.5.9
 	gorm.io/gorm v1.25.11
