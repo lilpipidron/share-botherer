@@ -1,9 +1,6 @@
 package bot
 
 import (
-	"crypto/sha256"
-	"encoding/hex"
-	"strconv"
 	"strings"
 
 	"github.com/charmbracelet/log"
@@ -41,8 +38,6 @@ func Send(bot *telebot.Bot, storage *postgresql.StorageGorm) telebot.HandlerFunc
 			Text:       strings.Join(words[2:], " "),
 		}
 
-		m.DeleteKey = generateMessageHash(m.FromUserID, m.ToUserID, m.Text)
-
 		if err := storage.DB.Save(m).Error; err != nil {
 			log.Error(err)
 			return c.Send("Failed to send")
@@ -50,10 +45,4 @@ func Send(bot *telebot.Bot, storage *postgresql.StorageGorm) telebot.HandlerFunc
 
 		return c.Send("Sended")
 	}
-}
-
-func generateMessageHash(fromUserID, toUserID int64, text string) string {
-	data := []byte(strconv.Itoa(int(fromUserID)) + strconv.Itoa(int(toUserID)) + text)
-	hash := sha256.Sum256(data)
-	return hex.EncodeToString(hash[:])
 }

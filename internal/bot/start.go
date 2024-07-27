@@ -20,22 +20,10 @@ func Start(bot *telebot.Bot, storage *postgresql.StorageGorm) telebot.HandlerFun
 		}
 
 		if err := storage.DB.Save(&user).Error; err != nil {
-			if isUniqueViolation(err) {
-				return c.Send("User already exists")
-			}
-
 			log.Error(err)
 			return err
 		}
 
-		return c.Send("User saved")
+		return c.Send("To find out the list of available commands, type /help")
 	}
-}
-
-func isUniqueViolation(err error) bool {
-	var pgErr *pgconn.PgError
-	if errors.As(err, &pgErr) {
-		return pgErr.Code == pgerrcode.UniqueViolation
-	}
-	return false
 }

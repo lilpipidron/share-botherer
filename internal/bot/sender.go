@@ -1,7 +1,6 @@
 package bot
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/lilpipidron/share-botherer/internal/models"
@@ -30,8 +29,7 @@ ORDER BY RANDOM() DESC;
 		storage.DB.Raw(sql).Scan(&messages)
 
 		for _, message := range messages {
-			m := fmt.Sprintf("Delete key: %s, Message: \n %s", message.DeleteKey, message.Text)
-			bot.Send(&telebot.User{ID: message.ToUserID}, m)
+			bot.Send(&telebot.User{ID: message.ToUserID}, message.Text)
 		}
 	}
 }
