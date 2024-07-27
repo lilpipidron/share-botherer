@@ -22,6 +22,7 @@ func Pair(bot *telebot.Bot, storage *postgresql.StorageGorm) telebot.HandlerFunc
 		}
 
 		username := words[1]
+		username = strings.TrimPrefix(username, "@")
 		pair := &models.UserConnection{}
 		currentUserID := c.Message().Sender.ID
 		pairUser := &models.User{}
