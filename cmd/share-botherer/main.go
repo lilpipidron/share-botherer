@@ -20,7 +20,7 @@ func main() {
 	tgBot.Handle("/pair", bot.Pair(tgBot, db))
 	tgBot.Handle("/send", bot.Send(tgBot, db))
 	tgBot.Handle("/mark", bot.Mark(tgBot, db))
-
+	tgBot.Handle("/help", bot.Help())
 	go bot.Sender(tgBot, db)
 
 	tgBot.Start()

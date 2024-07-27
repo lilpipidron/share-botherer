@@ -1,11 +1,7 @@
 package bot
 
 import (
-	"errors"
-
 	"github.com/charmbracelet/log"
-	"github.com/jackc/pgerrcode"
-	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/lilpipidron/share-botherer/internal/models"
 	"github.com/lilpipidron/share-botherer/internal/storage/postgresql"
 	"gopkg.in/telebot.v3"
