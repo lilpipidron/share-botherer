@@ -1,4 +1,13 @@
 services:
+  share-botherer:
+    build:
+      context: ./share-botherer
+    command: ./main
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
   postgres:
     restart: unless-stopped
     image: postgres:latest
