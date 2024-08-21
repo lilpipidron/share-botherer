@@ -1,7 +1,7 @@
 services:
   share-botherer:
     build:
-      context: ./share-botherer
+      context: .
     command: ./main
     ports:
       - "8080:8080"
