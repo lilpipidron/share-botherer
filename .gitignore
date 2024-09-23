@@ -23,5 +23,4 @@ go.work
 go.work.sum
 
 .direnv/
-.envrc/
 result
