@@ -4,9 +4,6 @@ schema = 3
   [mod."github.com/aymanbagabas/go-osc52/v2"]
     version = "v2.0.1"
     hash = "sha256-6Bp0jBZ6npvsYcKZGHHIUSVSTAMEyieweAX2YAKDjjg="
-  [mod."github.com/caarlos0/env"]
-    version = "v3.5.0+incompatible"
-    hash = "sha256-QyCP/hBUYaI81QI6YTLHbM+vwQnspm4FgvRc4zrLcCs="
   [mod."github.com/caarlos0/env/v11"]
     version = "v11.1.0"
     hash = "sha256-54eWceHP2SR8C3gSk4+NmW+qmCTCwa6CYRfA6DxHEmM="
@@ -19,9 +16,27 @@ schema = 3
   [mod."github.com/go-logfmt/logfmt"]
     version = "v0.6.0"
     hash = "sha256-RtIG2qARd5sT10WQ7F3LR8YJhS8exs+KiuUiVf75bWg="
-  [mod."github.com/go-telegram-bot-api/telegram-bot-api/v5"]
-    version = "v5.5.1"
-    hash = "sha256-ycDLUgjYSBBADOT9HEBkkD/f6mPW8/hHdiQcOt/IaqE="
+  [mod."github.com/jackc/pgerrcode"]
+    version = "v0.0.0-20240316143900-6e2875d9b438"
+    hash = "sha256-Mr8+61PjW0FIubMXByQL73CEIuYiE88LPuk59KbMmgE="
+  [mod."github.com/jackc/pgpassfile"]
+    version = "v1.0.0"
+    hash = "sha256-H0nFbC34/3pZUFnuiQk9W7yvAMh6qJDrqvHp+akBPLM="
+  [mod."github.com/jackc/pgservicefile"]
+    version = "v0.0.0-20221227161230-091c0ba34f0a"
+    hash = "sha256-rBtUw15WPPDp2eulHXH5e2zCIed1OPFYwlCpgDOnGRM="
+  [mod."github.com/jackc/pgx/v5"]
+    version = "v5.5.5"
+    hash = "sha256-Uy9f1EVJwwf5eZtx/JuacqYMe7m/iOx/jHI81hRWqv8="
+  [mod."github.com/jackc/puddle/v2"]
+    version = "v2.2.1"
+    hash = "sha256-Edf8SLT/8l+xfHm9IjUGxs1MHtic2VgRyfqb6OzGA9k="
+  [mod."github.com/jinzhu/inflection"]
+    version = "v1.0.0"
+    hash = "sha256-3h3pHib5MaCXKyKLIMyQnSptDJ16kPjCOQPoEBoQsZg="
+  [mod."github.com/jinzhu/now"]
+    version = "v1.1.5"
+    hash = "sha256-NNLqoFx9FczBBDpD0O0aSHnC/YDZ9E/xQ340o7u63IM="
   [mod."github.com/joho/godotenv"]
     version = "v1.5.1"
     hash = "sha256-kA0osKfsc6Kp+nuGTRJyXZZlJt1D/kuEazKMWYCWcQ8="
@@ -43,12 +58,27 @@ schema = 3
   [mod."github.com/rivo/uniseg"]
     version = "v0.4.7"
     hash = "sha256-rDcdNYH6ZD8KouyyiZCUEy8JrjOQoAkxHBhugrfHjFo="
-  [mod."github.com/stretchr/testify"]
-    version = "v1.9.0"
-    hash = "sha256-uUp/On+1nK+lARkTVtb5RxlW15zxtw2kaAFuIASA+J0="
+  [mod."golang.org/x/crypto"]
+    version = "v0.17.0"
+    hash = "sha256-/vzBaeD/Ymyc7cpjBvSfJfuZ57zWa9LOaZM7b33eIx0="
   [mod."golang.org/x/exp"]
     version = "v0.0.0-20231006140011-7918f672742d"
     hash = "sha256-2SO1etTQ6UCUhADR5sgvDEDLHcj77pJKCIa/8mGDbAo="
+  [mod."golang.org/x/sync"]
+    version = "v0.1.0"
+    hash = "sha256-Hygjq9euZ0qz6TvHYQwOZEjNiTbTh1nSLRAWZ6KFGR8="
   [mod."golang.org/x/sys"]
-    version = "v0.13.0"
-    hash = "sha256-/+RDZ0a0oEfJ0k304VqpJpdrl2ZXa3yFlOxy4mjW7w0="
+    version = "v0.15.0"
+    hash = "sha256-n7TlABF6179RzGq3gctPDKDPRtDfnwPdjNCMm8ps2KY="
+  [mod."golang.org/x/text"]
+    version = "v0.14.0"
+    hash = "sha256-yh3B0tom1RfzQBf1RNmfdNWF1PtiqxV41jW1GVS6JAg="
+  [mod."gopkg.in/telebot.v3"]
+    version = "v3.3.6"
+    hash = "sha256-Ne6IkUEoNM5SGVUhVOOexiVzXOb4zg8jhm+cUm9qowU="
+  [mod."gorm.io/driver/postgres"]
+    version = "v1.5.9"
+    hash = "sha256-C/ieKeHEsR0sS8kG4YZaMCkWCBRfcRC4RH5nIyWQGX4="
+  [mod."gorm.io/gorm"]
+    version = "v1.25.11"
+    hash = "sha256-cR0jsCCR0CpqSA0Ci5Uq0/1YDONj3dl6lRuRYcu4HpQ="
