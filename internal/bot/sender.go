@@ -21,7 +21,12 @@ func Sender(bot *telebot.Bot, storage storage.IStorage) {
 		}
 
 		for _, message := range messages {
-			bot.Send(&telebot.User{ID: message.ToUserID}, message.Text)
+			if _, err := bot.Send(
+				&telebot.User{ID: message.ToUserID},
+				message.Text,
+			); err != nil {
+				log.Error("failed to send message")
+			}
 		}
 	}
 }

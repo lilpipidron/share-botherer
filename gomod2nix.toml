@@ -49,6 +49,9 @@ schema = 3
   [mod."github.com/mattn/go-runewidth"]
     version = "v0.0.15"
     hash = "sha256-WP39EU2UrQbByYfnwrkBDoKN7xzXsBssDq3pNryBGm0="
+  [mod."github.com/mattn/go-sqlite3"]
+    version = "v1.14.22"
+    hash = "sha256-CWF2Hjg43658NhaePWbGzS19gHJXjuTroG5c0W3hgYQ="
   [mod."github.com/muesli/reflow"]
     version = "v0.3.0"
     hash = "sha256-Pou2ybE9SFSZG6YfZLVV1Eyfm+X4FuVpDPLxhpn47Cc="
@@ -79,6 +82,9 @@ schema = 3
   [mod."gorm.io/driver/postgres"]
     version = "v1.5.9"
     hash = "sha256-C/ieKeHEsR0sS8kG4YZaMCkWCBRfcRC4RH5nIyWQGX4="
+  [mod."gorm.io/driver/sqlite"]
+    version = "v1.5.6"
+    hash = "sha256-ruKKw0WUlpVkkGGO0lsaXfhy5RmbgpSJ0qEA5ICPqlA="
   [mod."gorm.io/gorm"]
     version = "v1.25.11"
     hash = "sha256-cR0jsCCR0CpqSA0Ci5Uq0/1YDONj3dl6lRuRYcu4HpQ="
