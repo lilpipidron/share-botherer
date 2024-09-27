@@ -14,7 +14,7 @@ func Connect(cfg *config.Config) *telebot.Bot {
 		log.Fatal(err)
 	}
 
-	log.Info("Successfully connected to bot")
+	log.Info("connected to bot")
 
 	return bot
 }
