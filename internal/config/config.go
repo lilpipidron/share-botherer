@@ -11,11 +11,12 @@ type Config struct {
 }
 
 type PostgresConfig struct {
-	PostgresUser     string `env:"POSTGRES_USER,required"`
-	PostgresPassword string `env:"POSTGRES_PASSWORD,required"`
-	PostgresDB       string `env:"POSTGRES_DB,required"`
-	PostgresHost     string `env:"POSTGRES_HOST,required"`
-	PostgresPort     int    `env:"POSTGRES_PORT,required"`
+	Empty            bool
+	PostgresUser     string `env:"POSTGRES_USER"`
+	PostgresPassword string `env:"POSTGRES_PASSWORD"`
+	PostgresDB       string `env:"POSTGRES_DB"`
+	PostgresHost     string `env:"POSTGRES_HOST"`
+	PostgresPort     int    `env:"POSTGRES_PORT"`
 }
 
 type BotConfig struct {
@@ -24,11 +25,20 @@ type BotConfig struct {
 }
 
 func Load() *Config {
-	cfg := Config{}
+	config := Config{}
 
-	if err := env.Parse(&cfg); err != nil {
+	if err := env.Parse(&config); err != nil {
 		log.Fatal(err)
 	}
 
-	return &cfg
+	if config.PostgresUser == "" ||
+		config.PostgresPassword == "" ||
+		config.PostgresDB == "" ||
+		config.PostgresHost == "" ||
+		config.PostgresPort == 0 {
+		config.PostgresConfig = PostgresConfig{}
+		config.PostgresConfig.Empty = true
+	}
+
+	return &config
 }
